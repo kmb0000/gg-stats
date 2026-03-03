@@ -4,8 +4,7 @@
 .bgLayer {
   position: fixed; // Reste en place au scroll
   inset: 0; // Prend tout l'écran (top, right, bottom, left: 0)
-  z-index: -2; // Tout au fond, derrière les particules
-  background-color: #0b0e14; // Ta couleur de base sombre
+  z-index: -3; // Tout au fond, derrière les particules
   overflow: hidden;
   pointer-events: none; // Clique à travers
 
@@ -30,6 +29,7 @@
         rgba(200, 41, 42, 0.04) 0%,
         transparent 70%
       );
+    z-index: 1;
     animation: bgPulse 10s ease-in-out infinite alternate;
     filter: blur(40px); // Adoucit encore plus les dégradés
   }
@@ -42,7 +42,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cpath d='M30 2L58 17v18L30 50 2 35V17z' fill='none' stroke='rgba(200,155,60,0.04)' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 60px 52px;
     opacity: 0.6;
-    z-index: 1;
+    z-index: 2;
   }
 }
 
