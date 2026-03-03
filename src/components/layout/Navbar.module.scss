@@ -11,6 +11,7 @@
     width: 100%;
     padding: 20px 0px;
     border-bottom: 1px solid $border;
+    margin-bottom: 48px;
 
     .headerLogo {
       font-family: $font-display;
@@ -82,6 +83,21 @@
       width: 100%;
       font-family: $font-body;
       color: $gold;
+    }
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .containerHeader {
+    .headerTop {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .navbarLinks {
+      gap: 10px;
+    }
+    .inputSearch {
+      width: 100%;
     }
   }
 }

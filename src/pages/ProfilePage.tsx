@@ -1,5 +1,6 @@
 import Background from "../components/layout/Background";
 import Navbar from "../components/layout/Navbar";
+import Hero from "../components/sections/Hero";
 import styles from "./Profile.module.scss";
 
 export default function ProfilePage() {
@@ -9,6 +10,8 @@ export default function ProfilePage() {
 
       {/* NAV */}
       <Navbar />
+      {/* HERO SECTION */}
+      <Hero />
     </main>
   );
 }
