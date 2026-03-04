@@ -11,11 +11,15 @@ import { adaptProfile } from "../domain/profile/profile.adapter";
 import { type Region } from "../types";
 import { infoGame } from "../domain/match/matcth.adapter";
 import { aggregateMatches } from "../domain/match/match.aggregate";
-import { type AggregatedStats } from "../domain/match/match.types";
+import {
+  type PlayerMatch,
+  type AggregatedStats,
+} from "../domain/match/match.types";
 
 export function useProfile(region: Region, gameName: string, tagLine: string) {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [stats, setStats] = useState<AggregatedStats | null>(null);
+  const [matches, setMatches] = useState<PlayerMatch[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -28,15 +32,15 @@ export function useProfile(region: Region, gameName: string, tagLine: string) {
 
         const matchIds = await getMatchIds(account.puuid);
 
-        const matches = await Promise.all(
-          matchIds.map((matchId) => {
-            return getMatchById(matchId);
-          }),
+        const matchDetails = await Promise.all(
+          matchIds.map((matchId) => getMatchById(matchId)),
         );
 
-        const playerMatches = matches.map((match) =>
+        const playerMatches = matchDetails.map((match) =>
           infoGame(match, account.puuid),
         );
+
+        setMatches(playerMatches);
 
         const computedStats = aggregateMatches(playerMatches);
         setStats(computedStats);
@@ -55,5 +59,5 @@ export function useProfile(region: Region, gameName: string, tagLine: string) {
     apiFetch();
   }, [gameName, tagLine, region]);
 
-  return { profile, stats, loading, error };
+  return { profile, stats, loading, error, matches };
 }
