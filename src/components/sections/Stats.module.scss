@@ -1,0 +1,8 @@
+@use "../../styles/variables" as *;
+
+.sectionStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+  margin-bottom: 40px;
+}
