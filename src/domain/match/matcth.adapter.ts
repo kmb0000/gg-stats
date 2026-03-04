@@ -12,17 +12,38 @@ export function infoGame(matchData: RiotMatch, puuid: string): PlayerMatch {
     totalMinionsKilled,
     neutralMinionsKilled,
     win,
+    championName,
+    champLevel,
+    item0,
+    item1,
+    item2,
+    item3,
+    item4,
+    item5,
+    item6,
   } = player;
   const durationMinutes = Math.floor(matchData.info.gameDuration / 60);
 
   const totalCs = totalMinionsKilled + neutralMinionsKilled;
 
   return {
+    championName,
+    championLevel: champLevel,
     kills,
     deaths,
     assists,
     totalCs,
     durationMinutes,
     win,
+    items: {
+      item0,
+      item1,
+      item2,
+      item3,
+      item4,
+      item5,
+      item6,
+    },
+    gameEndTimestamp: matchData.info.gameEndTimestamp,
   };
 }

@@ -53,7 +53,7 @@ export default function Hero({ profile }: Props) {
         </div>
         <div className={styles.rankLp}>{profile.rank.lp} LP</div>
         <div className={styles.glowDivider}></div>
-        <div className={styles.season}>Saison 2024 - S14</div>
+        <div className={styles.season}>Saison 2026 - S16</div>
       </div>
     </section>
   );

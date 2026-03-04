@@ -1,6 +1,7 @@
 import Background from "../components/layout/Background";
 import Navbar from "../components/layout/Navbar";
 import Hero from "../components/sections/Hero";
+import MatchHistory from "../components/sections/MatchHistory";
 import StatsCard from "../components/sections/Stats-card";
 import { useProfile } from "../hooks/useProfile";
 import type { Region } from "../types";
@@ -8,10 +9,10 @@ import styles from "./Profile.module.scss";
 
 export default function ProfilePage() {
   const region: Region = "EUW";
-  const { profile, loading, error, stats } = useProfile(
+  const { profile, loading, error, stats, matches } = useProfile(
     region,
-    "G2 SkewMond",
-    "3327",
+    "KC NEXT ADKING",
+    "EUW",
   );
 
   if (loading) return <p>Chargement...</p>;
@@ -29,6 +30,8 @@ export default function ProfilePage() {
 
       {/* STATS */}
       <StatsCard rank={profile.rank} stats={stats} />
+
+      <MatchHistory matches={matches} />
     </main>
   );
 }

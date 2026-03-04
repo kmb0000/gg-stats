@@ -62,7 +62,7 @@ export async function getRank(puuid: string): Promise<RiotRank[]> {
 export async function getMatchIds(puuid: string): Promise<string[]> {
   try {
     const response = await fetch(
-      `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=2`,
+      `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5`,
       {
         headers: HEADERSAPI,
       },
