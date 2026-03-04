@@ -1,0 +1,30 @@
+@use "variables" as *;
+h1,
+h2,
+h3 {
+  font-family: $font-display;
+  font-weight: 900;
+}
+
+.text-gold {
+  color: $gold;
+}
+.text-blue {
+  color: $blue;
+}
+.text-red {
+  color: $red;
+}
+.text-dim {
+  color: $text-dim;
+}
+.text-white {
+  color: $white;
+}
+
+.font-display {
+  font-family: $font-display;
+}
+.font-body {
+  font-family: $font-body;
+}

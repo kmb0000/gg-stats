@@ -1,0 +1,103 @@
+@use "../../styles/variables" as *;
+
+.containerHeader {
+  width: 100%;
+  display: flex;
+
+  .headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0px;
+    border-bottom: 1px solid $border;
+    margin-bottom: 48px;
+
+    .headerLogo {
+      font-family: $font-display;
+      font-size: 20px;
+      font-weight: 900;
+      color: $gold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(200, 155, 60, 0.5);
+    }
+  }
+  .navbarLinks {
+    display: flex;
+    gap: 32px;
+    a {
+      position: relative;
+      color: $text-dim;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: $gold;
+        transform: scaleX(0);
+        transition: transform 0.2s;
+      }
+      &:hover {
+        color: $gold;
+      }
+
+      &:hover::after,
+      &.active::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+  .inputSearch {
+    width: 280px;
+    height: 43px;
+    gap: 12px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    color: $gold;
+    border: 1px solid $border;
+    background-color: $bg-card;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &:focus-within {
+      border-color: $gold;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    }
+    input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-weight: 500;
+      width: 100%;
+      font-family: $font-body;
+      color: $gold;
+    }
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .containerHeader {
+    .headerTop {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .navbarLinks {
+      gap: 10px;
+    }
+    .inputSearch {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@use "../../styles/variables" as *;
+
+.infoCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background: $bg-card;
+  border: 1px solid $border;
+  z-index: 10;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+
+  // On utilise top pour le hover car il ne rentre pas en conflit
+  // avec le transform de l'animation fadeUp
+  top: 0;
+
+  // Ajout d'un cubic-bezier pour un mouvement plus organique (smooth)
+  transition:
+    border-color 0.3s ease,
+    top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+
+  &:hover {
+    border-color: rgba(200, 155, 60, 0.5);
+    top: -8px; // Le rebond se fait sur la propriété top
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $gold, transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  .statLabel {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text-dim;
+    margin-bottom: 12px;
+  }
+
+  .winrate {
+    color: $green;
+    font-family: $font-display;
+    font-weight: 900;
+    font-size: 32px;
+
+    span {
+      font-size: 18px;
+      color: $text-dim;
+    }
+  }
+
+  .infoStats {
+    display: flex;
+    gap: 5px;
+    color: $text-dim;
+    font-size: 14px;
+  }
+  .statBar {
+    margin-top: 12px;
+    height: 3px;
+    background: rgba(138, 138, 138, 0.308);
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+
+    .statBarFill {
+      height: 100%;
+      background: linear-gradient(90deg, $gold-dim, $gold);
+      border-radius: 2px;
+      animation: barFill 1.5s ease 0.8s both;
+      width: 0;
+      transition: width 1.5s ease 0.8s;
+    }
+  }
+}
+
+@keyframes barFill {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
